@@ -5,8 +5,8 @@ This is a comprehensive testing environment prepared for AI-assisted programming
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.8 or higher
-- pip (Python package manager)
+- Conda (Anaconda or Miniconda)
+- Python 3.9 (managed by conda)
 
 ### Setup
 1. **Clone/Navigate to the project directory**
@@ -14,18 +14,16 @@ This is a comprehensive testing environment prepared for AI-assisted programming
    cd /Users/andy/workspace/claude-test
    ```
 
-2. **Install dependencies**
+2. **Install dependencies with conda**
    ```bash
    make install
    # OR manually:
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
+   conda env create -f environment.yml
    ```
 
-3. **Activate the virtual environment**
+3. **Activate the conda environment**
    ```bash
-   source venv/bin/activate
+   conda activate ml-env
    ```
 
 4. **Run tests to verify setup**
@@ -49,7 +47,7 @@ claude-test/
 │   └── test_data_processing.py
 ├── data/                    # Data directory (for datasets)
 ├── notebooks/               # Jupyter notebooks for exploration
-├── venv/                    # Virtual environment
+├── environment.yml          # Conda environment specification
 ├── requirements.txt         # Python dependencies
 ├── pytest.ini             # Pytest configuration
 ├── pyproject.toml          # Black/isort configuration

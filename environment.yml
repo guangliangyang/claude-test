@@ -1,0 +1,24 @@
+name: ml-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
+  - matplotlib
+  - seaborn
+  - plotly
+  - jupyter
+  - pytest
+  - pytest-cov
+  - pytest-watch
+  - black
+  - flake8
+  - isort
+  - pip
+  - pip:
+    - torch
+    - tensorflow
