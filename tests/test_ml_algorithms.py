@@ -48,7 +48,7 @@ class TestLinearRegression:
         assert mse < 1.0  # Should be quite accurate for this simple case
 
     def test_multivariate_regression(self):
-        X, y = make_regression(n_samples=100, n_features=3, noise=0.1, random_state=42)
+        X, y, _ = make_regression(n_samples=100, n_features=3, noise=0.1, random_state=42)
 
         lr = LinearRegression(learning_rate=0.01, max_iterations=1000)
         lr.fit(X, y)
@@ -58,6 +58,7 @@ class TestLinearRegression:
 
         # Should achieve reasonable accuracy
         assert mse < 10.0
+        assert lr.weights is not None
         assert lr.weights.shape == (3,)
 
 
@@ -107,6 +108,8 @@ class TestKMeans:
         kmeans.fit(X)
 
         # Should converge to two clear clusters
+        assert kmeans.centroids is not None
+        assert kmeans.labels is not None
         assert kmeans.centroids.shape == (2, 2)
         # Check that points are assigned to correct clusters
         labels = kmeans.labels

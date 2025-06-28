@@ -1,5 +1,5 @@
 import numpy as np
-from typing import Tuple, Optional
+from typing import Tuple, Optional, Union
 from sklearn.base import BaseEstimator, ClassifierMixin
 from sklearn.utils.validation import check_X_y, check_array
 
@@ -8,9 +8,9 @@ class LinearRegression:
     def __init__(self, learning_rate: float = 0.01, max_iterations: int = 1000):
         self.learning_rate = learning_rate
         self.max_iterations = max_iterations
-        self.weights = None
-        self.bias = None
-        self.cost_history = []
+        self.weights: Optional[np.ndarray] = None
+        self.bias: Optional[float] = None
+        self.cost_history: list = []
 
     def fit(self, X: np.ndarray, y: np.ndarray) -> "LinearRegression":
         n_samples, n_features = X.shape
@@ -34,6 +34,8 @@ class LinearRegression:
         return self
 
     def predict(self, X: np.ndarray) -> np.ndarray:
+        if self.weights is None or self.bias is None:
+            raise ValueError("Model must be fitted before making predictions")
         return np.dot(X, self.weights) + self.bias
 
 
@@ -44,8 +46,8 @@ class KMeans:
         self.k = k
         self.max_iterations = max_iterations
         self.random_state = random_state
-        self.centroids = None
-        self.labels = None
+        self.centroids: Optional[np.ndarray] = None
+        self.labels: Optional[np.ndarray] = None
 
     def fit(self, X: np.ndarray) -> "KMeans":
         if self.random_state:
@@ -75,6 +77,8 @@ class KMeans:
         return self
 
     def predict(self, X: np.ndarray) -> np.ndarray:
+        if self.centroids is None:
+            raise ValueError("Model must be fitted before making predictions")
         distances = np.sqrt(((X - self.centroids[:, np.newaxis]) ** 2).sum(axis=2))
         return np.argmin(distances, axis=0)
 
@@ -111,6 +115,8 @@ class NaiveBayes(BaseEstimator, ClassifierMixin):
 
     def predict_proba(self, X: np.ndarray) -> np.ndarray:
         X = check_array(X)
+        if self.classes is None:
+            raise ValueError("Model must be fitted before making predictions")
         probabilities = []
 
         for sample in X:
@@ -138,6 +144,8 @@ class NaiveBayes(BaseEstimator, ClassifierMixin):
         return np.array(probabilities)
 
     def predict(self, X: np.ndarray) -> np.ndarray:
+        if self.classes is None:
+            raise ValueError("Model must be fitted before making predictions")
         probabilities = self.predict_proba(X)
         return self.classes[np.argmax(probabilities, axis=1)]
 
@@ -165,9 +173,9 @@ def accuracy_score(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     return np.mean(y_true == y_pred)
 
 
-def mean_squared_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+def mean_squared_error(y_true: np.ndarray, y_pred: np.ndarray) -> Union[float, np.floating]:
     return np.mean((y_true - y_pred) ** 2)
 
 
-def mean_absolute_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+def mean_absolute_error(y_true: np.ndarray, y_pred: np.ndarray) -> Union[float, np.floating]:
     return np.mean(np.abs(y_true - y_pred))
