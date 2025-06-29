@@ -48,7 +48,7 @@ class TestLinearRegression:
         assert mse < 1.0  # Should be quite accurate for this simple case
 
     def test_multivariate_regression(self):
-        X, y, _ = make_regression(n_samples=100, n_features=3, noise=0.1, random_state=42)
+        X, y = make_regression(n_samples=100, n_features=3, noise=0.1, random_state=42)
 
         lr = LinearRegression(learning_rate=0.01, max_iterations=1000)
         lr.fit(X, y)
