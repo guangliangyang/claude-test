@@ -4,7 +4,9 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(pytest:*)"
+      "Bash(pytest:*)",
+      "Bash(例如：mmmmmffffff 有多少种推荐算法？\"\n\n## 🏗️ Core Implementation\n- **7 Diversification Algorithms**: Interleaving, Proportional Distribution, \n  MMR, Greedy, Randomized, Sliding Window, Entropy Maximization\n- **8 Evaluation Metrics**: Alternation score, Gini coefficient, entropy, \n  gender balance, prefix diversity, consecutive penalty, relevance preservation\n- **Comprehensive Visualization**: Sequence comparison, radar charts, heatmaps, rankings\n\n## 📊 Algorithm Performance Results\nFor input \"mmmmmffffff\":\n- Best Result: \"MFMFMFMFMFF\" (ProportionalDistributionAlgorithm)\n- Overall Score: 0.947/1.0\n- 96% algorithm code coverage with 33 passing tests\n\n## 🔧 Technical Architecture\n- **Modular Design**: Clean separation of algorithms, evaluators, visualizers\n- **Abstract Interfaces**: Strategy pattern implementation\n- **Production Ready**: Error handling, performance benchmarks, documentation\n- **Enterprise Quality**: Full test suite, type hints, comprehensive docs\n\n## 📁 New Components\n- `src/diversification/`: Complete diversification package\n- `examples/image_search_diversity.py`: Interactive demo\n- `tests/test_diversification.py`: Comprehensive test suite\n- `diversification_report/`: Auto-generated visualization reports\n\n## 🎉 Interview Readiness\n- Demonstrates 7 different algorithmic approaches\n- Provides quantitative evaluation and comparison\n- Shows enterprise-level software engineering skills\n- Ready for live coding demonstration\n\n🤖 Generated with [Claude Code](https://claude.ai/code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(python:*)"
     ],
     "deny": []
   }
